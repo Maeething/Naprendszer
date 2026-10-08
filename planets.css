@@ -1,0 +1,235 @@
+.planet-section {
+    margin-bottom: 50px;
+}
+
+.planet-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.planet-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.planet-card {
+    height: 330px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.8s;
+
+    transform-style: preserve-3d;
+}
+
+.planet-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    border: 2px solid #00aaff;
+    border-radius: 15px;
+
+    background-color: #111133;
+
+    backface-visibility: hidden;
+
+    box-shadow:
+        0 0 15px rgba(0, 170, 255, 0.25);
+}
+
+.card-front {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.card-front h3 {
+    color: #00aaff;
+
+    font-size: 24px;
+
+    margin-top: 20px;
+}
+
+.planet-image {
+    width: 150px;
+    height: 150px;
+
+    object-fit: contain;
+
+    animation: planetSpin 12s linear infinite;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 255, 255, 0.15))
+        drop-shadow(0 0 20px rgba(0, 170, 255, 0.25));
+
+    transition: transform 0.3s ease;
+}
+
+
+@keyframes planetSpin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.card-front:hover .planet-image {
+    animation-duration: 5s;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+
+    padding: 20px;
+
+    overflow: hidden;
+}
+
+.card-back h3 {
+    text-align: center;
+
+    color: #00aaff;
+
+    font-size: 24px;
+
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.planet-info {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.planet-info tr {
+    border-bottom: 1px solid #333355;
+}
+
+.planet-info td {
+    padding: 11px 5px;
+}
+
+.planet-info td:first-child {
+    color: #aaaaaa;
+}
+
+.planet-info td:last-child {
+    color: white;
+
+    text-align: right;
+
+    font-weight: bold;
+}
+
+.comparison-container {
+    overflow-x: auto;
+}
+
+.comparison-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: #111133;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 14px;
+
+    border: 1px solid #333355;
+
+    text-align: center;
+}
+
+
+.comparison-table th {
+    background-color: #111144;
+
+    color: #00aaff;
+
+    font-size: 17px;
+}
+
+.comparison-table tbody tr {
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+.comparison-table tbody tr:hover {
+    background-color: #003355;
+}
+
+.comparison-table tbody tr:hover td:first-child {
+    color: #00aaff;
+
+    font-weight: bold;
+}
+
+.rocky {
+    color: #ffb86c;
+}
+
+.gas {
+    color: #f5d08a;
+}
+
+.ice {
+    color: #66d9ef;
+}
+
+
+@media (max-width: 900px) {
+
+    .planet-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .planet-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .planet-card {
+        height: 320px;
+    }
+
+    .planet-image {
+        width: 130px;
+        height: 130px;
+    }
+
+}
