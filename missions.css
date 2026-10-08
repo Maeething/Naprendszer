@@ -1,0 +1,252 @@
+/* ==========================================
+   CSS ANIMÁCIÓK (@keyframes)
+   ========================================== */
+
+/* 1. Idővonal pont pulzáló neongyűrűje */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff;
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 15px #00aaff, 0 0 25px rgba(0, 170, 255, 0.8);
+        transform: scale(1.2);
+    }
+    100% {
+        box-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff;
+        transform: scale(1);
+    }
+}
+
+/* 2. Kártyák beúszó animációja */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. Útmutató szöveg lebegése */
+@keyframes floatHint {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+
+/* ==========================================
+   IDŐVONAL ÉS 3D KÁRTYA STÍLUSOK
+   ========================================== */
+
+.idovonal {
+    position: relative;
+    border-left: 3px solid #00aaff;
+    margin-left: 20px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* 3D KÁRTYA KONTÉNER */
+.misszio {
+    position: relative;
+    perspective: 1000px;
+    margin-bottom: 35px;
+    height: 300px;
+    animation: fadeInUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) ease-out both;
+    cursor: pointer;
+}
+
+/* Lépcsőzetes beúszás */
+.misszio:nth-child(1) { animation-delay: 0.1s; }
+.misszio:nth-child(2) { animation-delay: 0.2s; }
+.misszio:nth-child(3) { animation-delay: 0.3s; }
+.misszio:nth-child(4) { animation-delay: 0.4s; }
+.misszio:nth-child(5) { animation-delay: 0.5s; }
+.misszio:nth-child(6) { animation-delay: 0.6s; }
+.misszio:nth-child(7) { animation-delay: 0.7s; }
+.misszio:nth-child(8) { animation-delay: 0.8s; }
+
+/* Idővonal ragyogó, pulzáló pontja */
+.misszio::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 30px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #00aaff;
+    border: 3px solid #000022;
+    z-index: 10;
+    animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* BELSŐ KÁRTYA */
+.misszio-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+/* FORGATÁS KATTINTÁSKOR (.flipped OSZTÁLY) */
+.misszio.flipped .misszio-inner {
+    transform: rotateY(180deg);
+}
+
+/* ELŐLAP ÉS HÁTULAP KÖZÖS STÍLUSA */
+.misszio-front,
+.misszio-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-sizing: border-box;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* --- ELŐLAP STÍLUSA --- */
+.misszio-front {
+    background: linear-gradient(145deg, #131336, #1a1a40);
+    border: 1px solid rgba(0, 170, 255, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transform: rotateY(0deg);
+}
+
+.card-text-top {
+    margin-bottom: 4px;
+}
+
+.misszio-front h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.misszio-ev {
+    background: linear-gradient(135deg, #00aaff, #0055ff);
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.3);
+}
+
+.misszio-front p {
+    margin: 6px 0 0 0;
+    color: #cccccc;
+    font-size: 1rem;
+}
+
+/* KÉP KONTÉNER ÉS KÉP */
+.misszio-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    margin: 4px 0;
+}
+
+.misszio-img {
+    max-width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 170, 255, 0.35);
+    background-color: rgba(5, 8, 20, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    position: relative;
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* ERŐTELJES KINAGYÍTÁS A KÉPEN */
+.misszio-img:hover {
+    transform: scale(2.2); /* Több mint kétszeresére nagyul ki */
+    border-color: #00aaff;
+    box-shadow: 0 12px 30px rgba(0, 170, 255, 0.8);
+    z-index: 20; /* Biztosítja, hogy a többi elem fölé kerüljön */
+}
+
+.flip-hint {
+    font-size: 0.85rem;
+    color: #00aaff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: floatHint 2s infinite ease-in-out;
+}
+
+/* --- HÁTULAP STÍLUSA --- */
+.misszio-back {
+    background: linear-gradient(145deg, #080826, #101042);
+    border: 1px solid #00aaff;
+    box-shadow: 0 0 25px rgba(0, 170, 255, 0.35);
+    transform: rotateY(180deg);
+}
+
+.misszio-back h3 {
+    margin: 0 0 12px 0;
+    color: #00aaff;
+    font-size: 1.25rem;
+}
+
+.misszio-back p {
+    margin: 0;
+    color: #e2e8f0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.back-footer {
+    font-size: 0.8rem;
+    color: #8892b0;
+    text-align: right;
+    font-style: italic;
+}
+
+/* AKTÍV NAVIGÁCIÓS LINK KIEMELÉSE */
+nav a.active {
+    color: #00aaff;
+    border-bottom: 2px solid #00aaff;
+    padding-bottom: 4px;
+}
+
+/* MOBILBARÁT BEÁLLÍTÁSOK */
+@media (max-width: 600px) {
+    .idovonal {
+        margin-left: 10px;
+        padding-left: 20px;
+    }
+    .misszio::before {
+        left: -28px;
+    }
+    .misszio {
+        height: 310px;
+    }
+    .misszio-img:hover {
+        transform: scale(1.6); /* Mobilon kisebb nagyítás a képernyőméret miatt */
+    }
+}
