@@ -1,0 +1,139 @@
+
+main {
+    background-image: url('kepek/background.jpg');
+    background-size: cove
+}
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h1 {
+    margin-bottom: 40px;
+    animation: szin 7s infinite linear;
+}
+
+.logo {
+    animation: szin 7s infinite linear;
+}
+
+@keyframes szin {
+    0%   { color: #00f0ff; }
+    33%  { color: #7000ff; }
+    66%  { color: #ff007f; }
+    100% { color: #00f0ff; }
+}
+
+
+.naprendszer {
+    position: relative;
+    width: 500px; 
+    height: 500px;
+    margin: 0 auto;
+    display: flex;            
+    justify-content: center;  
+    align-items: center;      
+}
+
+.nap {
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 25px orange;
+    position: absolute;
+    z-index: 10;
+}
+
+
+.palya {
+    position: absolute;
+    border: 1px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: flex;            
+    justify-content: center;  
+    align-items: flex-start;  
+    animation: forgas linear infinite;
+}
+
+
+.palya1 { width: 80px; height: 80px; animation-duration: 4s; }
+.palya2 { width: 120px; height: 120px; animation-duration: 6s; }
+.palya3 { width: 160px; height: 160px; animation-duration: 8s; }
+.palya4 { width: 200px; height: 200px; animation-duration: 10s; }
+.palya5 { width: 270px; height: 270px; animation-duration: 15s; }
+.palya6 { width: 340px; height: 340px; animation-duration: 20s; }
+.palya7 { width: 410px; height: 410px; animation-duration: 25s; }
+.palya8 { width: 480px; height: 480px; animation-duration: 30s; }
+
+
+.bolygo {
+    border-radius: 50%;
+   
+}
+
+
+.bolygo1 { width: 8px; height: 8px; background-color: #a0a0a0; margin-top: -4px; }
+.bolygo2 { width: 12px; height: 12px; background-color: #e6c280; margin-top: -6px; }
+.bolygo3 { width: 12px; height: 12px; background-color: #58a6ff; margin-top: -6px; }
+.bolygo4 { width: 10px; height: 10px; background-color: #c1440e; margin-top: -5px; }
+.bolygo5 { width: 24px; height: 24px; background-color: #d4a373; margin-top: -12px; }
+.bolygo6 { width: 20px; height: 20px; background-color: #e0c080; margin-top: -10px; }
+.bolygo7 { width: 16px; height: 16px; background-color: #a0d8ef; margin-top: -8px; }
+.bolygo8 { width: 16px; height: 16px; background-color: #4b70dd; margin-top: -8px; }
+
+@keyframes forgas {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.erdekessegkont {
+    display: flex;
+    justify-content: center;
+}
+
+.erdekessegek {
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgb(92, 87, 87, 0.2);
+    width: 50%;
+    border-radius: 30px;
+    
+}
+
+.erdekessegek h2 {
+    padding-top: 20px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.kartya-doboz {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.kartya {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    padding: 20px;
+    width: 250px;
+    border-radius: 8px;
+    transition: 0.3s;
+    color: #c9d1d9;
+}
+
+.kartya:hover {
+    transform: translateY(-10px);
+    border-color: #58a6ff;
+    box-shadow: 0 5px 15px rgba(88, 166, 255, 0.3);
+}
+
+.kartya h3 {
+    color: #58a6ff;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
