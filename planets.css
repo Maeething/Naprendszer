@@ -1,34 +1,33 @@
-
 .planet-section {
     margin-bottom: 50px;
 }
 
 .planet-section h2 {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
-
 
 .planet-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 25px;
 }
 
-
 .planet-card {
-    height: 320px;
+    height: 330px;
     perspective: 1000px;
 }
 
 .card-inner {
     position: relative;
+
     width: 100%;
     height: 100%;
+
     transition: transform 0.8s;
+
     transform-style: preserve-3d;
 }
-
 
 .planet-card:hover .card-inner {
     transform: rotateY(180deg);
@@ -37,48 +36,60 @@
 .card-front,
 .card-back {
     position: absolute;
+
     width: 100%;
     height: 100%;
+
     box-sizing: border-box;
 
-    backface-visibility: hidden;
     border: 2px solid #00aaff;
     border-radius: 15px;
 
     background-color: #111133;
 
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.25);
-}
+    backface-visibility: hidden;
 
+    box-shadow:
+        0 0 15px rgba(0, 170, 255, 0.25);
+}
 
 .card-front {
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
+
+    overflow: hidden;
 }
 
 .card-front h3 {
     color: #00aaff;
+
     font-size: 24px;
+
     margin-top: 20px;
 }
 
+.planet-image {
+    width: 150px;
+    height: 150px;
 
+    object-fit: contain;
 
-.planet {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
+    animation: planetSpin 12s linear infinite;
 
-    animation: planetRotate 8s linear infinite;
+    filter:
+        drop-shadow(0 0 10px rgba(255, 255, 255, 0.15))
+        drop-shadow(0 0 20px rgba(0, 170, 255, 0.25));
 
-    box-shadow:
-        inset -20px -15px 30px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease;
 }
 
-@keyframes planetRotate {
+
+@keyframes planetSpin {
+
     from {
         transform: rotate(0deg);
     }
@@ -86,95 +97,44 @@
     to {
         transform: rotate(360deg);
     }
+
 }
 
-.mercury {
-    background:
-        radial-gradient(circle at 30% 30%, #dddddd, #777777 45%, #333333);
+.card-front:hover .planet-image {
+    animation-duration: 5s;
 }
-
-.venus {
-    background:
-        radial-gradient(circle at 35% 30%, #ffe7a0, #d89030 55%, #704010);
-}
-
-.earth {
-    background:
-        radial-gradient(circle at 65% 35%, #228b22 0 12%, transparent 13%),
-        radial-gradient(circle at 35% 65%, #228b22 0 15%, transparent 16%),
-        radial-gradient(circle, #3da9e8 0 55%, #123b7a 80%);
-}
-
-.mars {
-    background:
-        radial-gradient(circle at 35% 30%, #ff9966, #c44b2b 55%, #6b1f1f);
-}
-
-.jupiter {
-    background:
-        repeating-linear-gradient(
-            0deg,
-            #d9b38c 0px,
-            #d9b38c 15px,
-            #a66b45 16px,
-            #f0d2ad 28px
-        );
-}
-
-.saturn {
-    position: relative;
-
-    background:
-        radial-gradient(circle at 35% 30%, #ffe9a3, #c69b42 60%, #79551f);
-}
-
-.saturn::after {
-
-    position: absolute;
-
-    width: 190px;
-    height: 50px;
-
-    border: 8px solid rgba(220, 190, 120, 0.8);
-    border-radius: 50%;
-
-    transform: rotate(-20deg);
-}
-
-.uranus {
-    background:
-        radial-gradient(circle at 35% 30%, #b9ffff, #58cbd8 60%, #22606b);
-}
-
-.neptune {
-    background:
-        radial-gradient(circle at 35% 30%, #75aaff, #2457c5 60%, #172b6b);
-}
-
-
 
 .card-back {
     transform: rotateY(180deg);
+
     padding: 20px;
+
+    overflow: hidden;
 }
 
 .card-back h3 {
     text-align: center;
-    color: #00aaff;
-    margin-top: 5px;
-}
 
-/* Adattábla */
+    color: #00aaff;
+
+    font-size: 24px;
+
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
 
 .planet-info {
     width: 100%;
+
     border-collapse: collapse;
-    margin-top: 20px;
+}
+
+.planet-info tr {
+    border-bottom: 1px solid #333355;
 }
 
 .planet-info td {
-    padding: 10px 5px;
-    border-bottom: 1px solid #333355;
+    padding: 11px 5px;
 }
 
 .planet-info td:first-child {
@@ -182,12 +142,12 @@
 }
 
 .planet-info td:last-child {
+    color: white;
+
     text-align: right;
-    color: #ffffff;
+
     font-weight: bold;
 }
-
-
 
 .comparison-container {
     overflow-x: auto;
@@ -195,42 +155,81 @@
 
 .comparison-table {
     width: 100%;
+
     border-collapse: collapse;
+
     background-color: #111133;
 }
 
 .comparison-table th,
 .comparison-table td {
-    padding: 12px;
+    padding: 14px;
+
     border: 1px solid #333355;
+
     text-align: center;
 }
 
+
 .comparison-table th {
-    background-color: #15154a;
+    background-color: #111144;
+
     color: #00aaff;
+
+    font-size: 17px;
 }
 
-/* Hover sorkiemelés */
+.comparison-table tbody tr {
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
 
 .comparison-table tbody tr:hover {
     background-color: #003355;
-    color: white;
 }
 
 .comparison-table tbody tr:hover td:first-child {
     color: #00aaff;
+
     font-weight: bold;
 }
 
-@media (max-width: 800px) {
+.rocky {
+    color: #ffb86c;
+}
+
+.gas {
+    color: #f5d08a;
+}
+
+.ice {
+    color: #66d9ef;
+}
+
+
+@media (max-width: 900px) {
+
     .planet-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
 }
 
-@media (max-width: 500px) {
+
+@media (max-width: 550px) {
+
     .planet-grid {
         grid-template-columns: 1fr;
     }
+
+    .planet-card {
+        height: 320px;
+    }
+
+    .planet-image {
+        width: 130px;
+        height: 130px;
+    }
+
 }
