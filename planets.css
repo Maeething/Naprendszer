@@ -1,31 +1,53 @@
+main {
+    max-width: 1200px;
+    width: 92%;
+    margin: 0 auto;
+    padding: 35px 0;
+}
+
+main > h1 {
+    color: #58a6ff;
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+main > p {
+    color: #c9d1d9;
+    text-align: center;
+    line-height: 1.7;
+    margin-bottom: 45px;
+}
+
+
 .planet-section {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .planet-section h2 {
+    color: #58a6ff;
     text-align: center;
+    font-size: 28px;
     margin-bottom: 30px;
 }
 
+
 .planet-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 25px;
 }
 
 .planet-card {
-    height: 330px;
+    height: 320px;
     perspective: 1000px;
 }
 
 .card-inner {
     position: relative;
-
     width: 100%;
     height: 100%;
-
     transition: transform 0.8s;
-
     transform-style: preserve-3d;
 }
 
@@ -36,167 +58,140 @@
 .card-front,
 .card-back {
     position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    box-sizing: border-box;
-
-    border: 2px solid #00aaff;
-    border-radius: 15px;
-
-    background-color: #111133;
-
+    inset: 0;
+    border: 1px solid #30363d;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #161b22, #101820);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
     backface-visibility: hidden;
-
-    box-shadow:
-        0 0 15px rgba(0, 170, 255, 0.25);
+    -webkit-backface-visibility: hidden;
 }
 
 .card-front {
     display: flex;
-
     flex-direction: column;
-
-    justify-content: center;
     align-items: center;
-
+    justify-content: center;
     overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.planet-card:hover .card-front,
+.planet-card:hover .card-back {
+    border-color: #58a6ff;
+    box-shadow: 0 0 22px rgba(88, 166, 255, 0.18);
+}
+
+.card-front h3,
+.card-back h3 {
+    color: #58a6ff;
+    text-align: center;
+    font-size: 23px;
 }
 
 .card-front h3 {
-    color: #00aaff;
-
-    font-size: 24px;
-
     margin-top: 20px;
 }
 
+
 .planet-image {
-    width: 150px;
-    height: 150px;
-
+    width: 145px;
+    height: 145px;
     object-fit: contain;
-
-    animation: planetSpin 12s linear infinite;
-
-    filter:
-        drop-shadow(0 0 10px rgba(255, 255, 255, 0.15))
-        drop-shadow(0 0 20px rgba(0, 170, 255, 0.25));
-
-    transition: transform 0.3s ease;
+    animation: planetSpin 18s linear infinite;
+    filter: drop-shadow(0 0 12px rgba(88, 166, 255, 0.2));
 }
 
-
 @keyframes planetSpin {
-
     from {
         transform: rotate(0deg);
     }
-
     to {
         transform: rotate(360deg);
     }
-
 }
 
-.card-front:hover .planet-image {
-    animation-duration: 5s;
-}
 
 .card-back {
     transform: rotateY(180deg);
-
-    padding: 20px;
-
-    overflow: hidden;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card-back h3 {
-    text-align: center;
-
-    color: #00aaff;
-
-    font-size: 24px;
-
-    margin-top: 5px;
     margin-bottom: 20px;
 }
 
 .planet-info {
     width: 100%;
-
     border-collapse: collapse;
+    font-size: 14px;
 }
 
 .planet-info tr {
-    border-bottom: 1px solid #333355;
+    border-bottom: 1px solid #30363d;
+}
+
+.planet-info tr:last-child {
+    border-bottom: none;
 }
 
 .planet-info td {
-    padding: 11px 5px;
+    padding: 12px 4px;
+    line-height: 1.4;
 }
 
 .planet-info td:first-child {
-    color: #aaaaaa;
+    color: #8b949e;
 }
 
 .planet-info td:last-child {
-    color: white;
-
+    color: #ffffff;
     text-align: right;
-
     font-weight: bold;
 }
 
+
 .comparison-container {
     overflow-x: auto;
+    border: 1px solid #30363d;
+    border-radius: 12px;
 }
 
 .comparison-table {
     width: 100%;
-
     border-collapse: collapse;
-
-    background-color: #111133;
+    background-color: #161b22;
 }
 
 .comparison-table th,
 .comparison-table td {
-    padding: 14px;
-
-    border: 1px solid #333355;
-
+    padding: 16px;
     text-align: center;
+    border-bottom: 1px solid #30363d;
 }
 
-
 .comparison-table th {
-    background-color: #111144;
-
-    color: #00aaff;
-
-    font-size: 17px;
+    color: #58a6ff;
+    background-color: #212833;
 }
 
 .comparison-table tbody tr {
-    transition:
-        background-color 0.2s,
-        transform 0.2s;
+    transition: background-color 0.25s;
 }
 
 .comparison-table tbody tr:hover {
-    background-color: #003355;
+    background-color: #26364a;
 }
 
-.comparison-table tbody tr:hover td:first-child {
-    color: #00aaff;
-
-    font-weight: bold;
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
 }
 
 .rocky {
-    color: #ffb86c;
+    color: #ffbd7a;
 }
 
 .gas {
@@ -204,32 +199,53 @@
 }
 
 .ice {
-    color: #66d9ef;
+    color: #79d4e8;
 }
 
-
-@media (max-width: 900px) {
-
+@media (max-width: 950px) {
     .planet-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    main > h1 {
+        font-size: 32px;
+    }
 }
 
-
-@media (max-width: 550px) {
+@media (max-width: 600px) {
+    main {
+        width: 90%;
+        padding-top: 25px;
+    }
 
     .planet-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .planet-card {
-        height: 320px;
+        height: 310px;
     }
 
+    .planet-section h2 {
+        font-size: 24px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
     .planet-image {
-        width: 130px;
-        height: 130px;
+        animation: none;
     }
 
+    .card-inner {
+        transition: none;
+    }
 }
