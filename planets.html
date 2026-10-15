@@ -3,25 +3,32 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bolygók</title>
+    <link rel="icon" type="image/png" href="kepek/icon.png">
     <link rel="stylesheet" href="kozos.css">
     <link rel="stylesheet" href="planets.css">
 </head>
 
 <body>
     <header>
-        <h1>🌌 Galaxis Adatbázis</h1>
+        <a href="index.html" class="logo">🚀 Kozmosz</a>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger" aria-label="Menü megnyitása">
+            <span></span><span></span><span></span>
+        </label>
         <nav>
             <ul>
-                <li> <a href="index.html">Főoldal</a> </li>
-                <li> <a href="planets.html">Bolygók</a> </li>
-                <li> <a href="missions.html">Missziók</a> </li>
+                <li><a href="index.html">Főoldal</a></li>
+                <li><a href="planets.html" class="active">Bolygók</a></li>
+                <li><a href="missions.html">Missziók</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <h1>Bolygók</h1>
-        <p> Fedezd fel a Naprendszer bolygóit! Vidd az egeret egy bolygó fölé, hogy megtekintsd az adatait. </p>
+        <p>Fedezd fel a Naprendszer bolygóit! Vidd az egeret egy bolygó fölé, hogy megtekintsd az adatait.</p>
 
         <section class="planet-section">
             <h2>Kőzetbolygók</h2>
@@ -140,6 +147,7 @@
                 </div>
             </div>
         </section>
+
         <section class="planet-section">
             <h2>Gázóriások és jégóriások</h2>
             <div class="planet-grid">
@@ -257,6 +265,7 @@
                 </div>
             </div>
         </section>
+
         <section class="planet-section">
             <h2>Bolygók méretarányai</h2>
             <div class="comparison-container">
@@ -322,6 +331,7 @@
                 </table>
             </div>
         </section>
+
         <section class="planet-section phenomena-section" id="jelensegek">
             <h2>Különleges jelenségek a bolygókon</h2>
 
@@ -330,7 +340,6 @@
                 jelenségnek adnak otthont. Ismerj meg közülük néhányat!
             </p>
 
-            
             <div class="phenomenon">
                 <div class="phenomenon-image">
                     <img src="images/jupiter.png" alt="A Jupiter bolygó">
@@ -348,7 +357,6 @@
                 </div>
             </div>
 
-            
             <div class="phenomenon reverse">
                 <div class="phenomenon-image">
                     <img src="images/saturn.png" alt="A Szaturnusz és gyűrűi">
@@ -367,7 +375,6 @@
                 </div>
             </div>
 
-            
             <div class="phenomenon">
                 <div class="phenomenon-image">
                     <img src="images/uranus.png" alt="Az Uránusz kékeszöld bolygója">
@@ -386,8 +393,15 @@
             </div>
         </section>
     </main>
+
     <footer>
-        <p> © 2026 Galaxis Adatbázis </p>
+        <div>
+            <a href="#">Közösség</a>
+            <a href="#">Discord</a>
+            <a href="#">Twitter</a>
+        </div>
+        <a href="#" class="back-to-top">Vissza a tetejére ↑</a>
     </footer>
 </body>
+
 </html>

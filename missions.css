@@ -1,89 +1,76 @@
 @keyframes pulseGlow {
     0% {
-        box-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff;
+        box-shadow: 0 0 5px #58a6ff, 0 0 10px #58a6ff;
         transform: scale(1);
     }
     50% {
-        box-shadow: 0 0 15px #00aaff, 0 0 25px rgba(0, 170, 255, 0.8);
+        box-shadow: 0 0 15px #58a6ff, 0 0 25px rgba(88, 166, 255, 0.8);
         transform: scale(1.2);
     }
     100% {
-        box-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff;
+        box-shadow: 0 0 5px #58a6ff, 0 0 10px #58a6ff;
         transform: scale(1);
     }
 }
 
-/* 2. Kártyák beúszó animációja */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* 3. Útmutató szöveg lebegése */
 @keyframes floatHint {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-4px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
 }
 
-/* ==========================================
-   KÉTOLDALAS (CIKCAKKOS) IDŐVONAL - EGYMÁMBA TOLVA
-   ========================================== */
+main > h2 {
+    text-align: center;
+    color: #58a6ff;
+    margin: 40px 20px 20px;
+    font-size: 28px;
+}
+
 
 .idovonal {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 20px 0 40px;
 }
 
-/* Az idővonal függőleges vonala középen */
 .idovonal::after {
     content: '';
     position: absolute;
     width: 3px;
-    background-color: #00aaff;
+    background-color: #58a6ff;
     top: 0;
     bottom: 0;
     left: 50%;
     margin-left: -1.5px;
-    box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
 }
 
-/* 3D KÁRTYA KONTÉNER */
 .misszio {
     position: relative;
     perspective: 1000px;
     width: 50%;
     height: 300px;
-    margin-bottom: -100px; /* Negatív margin a függőleges betoláshoz / átlapoláshoz */
+    margin-bottom: -100px;
     box-sizing: border-box;
     animation: fadeInUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) ease-out both;
     cursor: pointer;
 }
 
-/* BAL OLDALI KÁRTYÁK (PÁRATLAN SORSZÁMÚAK) */
 .misszio:nth-child(odd) {
     left: 0;
-    padding-right: 15px; /* Csökkentett térköz a középvonal felé */
+    padding-right: 15px;
 }
 
-/* JOBB OLDALI KÁRTYÁK (PÁROS SORSZÁMÚAK) */
 .misszio:nth-child(even) {
     left: 50%;
-    padding-left: 15px; /* Csökkentett térköz a középvonal felé */
+    padding-left: 15px;
 }
 
-/* Lépcsőzetes beúszási késleltetés és z-index a jobb rétegrendért */
 .misszio:nth-child(1) { animation-delay: 0.1s; z-index: 8; }
 .misszio:nth-child(2) { animation-delay: 0.2s; z-index: 7; }
 .misszio:nth-child(3) { animation-delay: 0.3s; z-index: 6; }
@@ -93,7 +80,6 @@
 .misszio:nth-child(7) { animation-delay: 0.7s; z-index: 2; }
 .misszio:nth-child(8) { animation-delay: 0.8s; z-index: 1; }
 
-/* IDŐVONAL RAGYOGÓ PONTJAI */
 .misszio::before {
     content: '';
     position: absolute;
@@ -101,23 +87,15 @@
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background-color: #00aaff;
+    background-color: #58a6ff;
     border: 3px solid #0d1117;
     z-index: 10;
     animation: pulseGlow 2.5s infinite ease-in-out;
 }
 
-/* Bal oldali kártya pontja a jobb szélén van */
-.misszio:nth-child(odd)::before {
-    right: -7px;
-}
+.misszio:nth-child(odd)::before  { right: -7px; }
+.misszio:nth-child(even)::before { left: -7px; }
 
-/* Jobb oldali kártya pontja a bal szélén van */
-.misszio:nth-child(even)::before {
-    left: -7px;
-}
-
-/* BELSŐ KÁRTYA */
 .misszio-inner {
     position: relative;
     width: 100%;
@@ -127,22 +105,13 @@
     transform-style: preserve-3d;
 }
 
-/* Bal oldali kártyák a vonalhoz közel tolva */
-.misszio:nth-child(odd) .misszio-inner {
-    margin-left: auto;
-}
+.misszio:nth-child(odd)  .misszio-inner { margin-left: auto; }
+.misszio:nth-child(even) .misszio-inner { margin-right: auto; }
 
-/* Jobb oldali kártyák a vonalhoz közel tolva */
-.misszio:nth-child(even) .misszio-inner {
-    margin-right: auto;
-}
-
-/* FORGATÁS KATTINTÁSKOR (.flipped OSZTÁLY) */
 .misszio.flipped .misszio-inner {
     transform: rotateY(180deg);
 }
 
-/* ELŐLAP ÉS HÁTULAP KÖZÖS STÍLUSA */
 .misszio-front,
 .misszio-back {
     position: absolute;
@@ -151,7 +120,7 @@
     top: 0;
     left: 0;
     border-radius: 12px;
-    padding: 20px 24px;
+    padding: 18px 22px;
     box-sizing: border-box;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -160,21 +129,18 @@
     justify-content: space-between;
 }
 
-/* --- ELŐLAP STÍLUSA --- */
 .misszio-front {
-    background: linear-gradient(145deg, #131336, #1a1a40);
-    border: 1px solid rgba(0, 170, 255, 0.3);
+    background: linear-gradient(145deg, #161b22, #1a1f2e);
+    border: 1px solid rgba(88, 166, 255, 0.3);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     transform: rotateY(0deg);
 }
 
-.card-text-top {
-    margin-bottom: 4px;
-}
+.card-text-top { margin-bottom: 4px; }
 
 .misszio-front h2 {
     margin: 0;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -183,23 +149,22 @@
 }
 
 .misszio-ev {
-    background: linear-gradient(135deg, #00aaff, #0055ff);
+    background: linear-gradient(135deg, #58a6ff, #1f6feb);
     color: #ffffff;
     padding: 3px 10px;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: bold;
     letter-spacing: 0.5px;
-    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(88, 166, 255, 0.3);
 }
 
 .misszio-front p {
     margin: 6px 0 0 0;
-    color: #cccccc;
-    font-size: 1rem;
+    color: #c9d1d9;
+    font-size: 0.95rem;
 }
 
-/* KÉP KONTÉNER ÉS KÉP */
 .misszio-img-container {
     display: flex;
     justify-content: center;
@@ -210,26 +175,28 @@
 
 .misszio-img {
     max-height: 150px;
+    max-width: 100%;
     object-fit: contain;
     border-radius: 8px;
-    border: 1px solid rgba(0, 170, 255, 0.35);
+    border: 1px solid rgba(88, 166, 255, 0.35);
     background-color: rgba(5, 8, 20, 0.6);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     position: relative;
-    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, border-color 0.35s ease;
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
 }
 
-/* ERŐTELJES KINAGYÍTÁS A KÉPEN */
 .misszio-img:hover {
     transform: scale(1.5);
-    border-color: #00aaff;
-    box-shadow: 0 12px 30px rgba(0, 170, 255, 0.8);
+    border-color: #58a6ff;
+    box-shadow: 0 12px 30px rgba(88, 166, 255, 0.8);
     z-index: 20;
 }
 
 .flip-hint {
     font-size: 0.85rem;
-    color: #00aaff;
+    color: #58a6ff;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -237,24 +204,23 @@
     animation: floatHint 2s infinite ease-in-out;
 }
 
-/* --- HÁTULAP STÍLUSA --- */
 .misszio-back {
-    background: linear-gradient(145deg, #080826, #101042);
-    border: 1px solid #00aaff;
-    box-shadow: 0 0 25px rgba(0, 170, 255, 0.35);
+    background: linear-gradient(145deg, #0d1117, #161b22);
+    border: 1px solid #58a6ff;
+    box-shadow: 0 0 25px rgba(88, 166, 255, 0.35);
     transform: rotateY(180deg);
 }
 
 .misszio-back h3 {
     margin: 0 0 12px 0;
-    color: #00aaff;
-    font-size: 1.25rem;
+    color: #58a6ff;
+    font-size: 1.2rem;
 }
 
 .misszio-back p {
     margin: 0;
     color: #e2e8f0;
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.6;
 }
 
@@ -265,43 +231,75 @@
     font-style: italic;
 }
 
-nav a.active {
-    color: #00aaff;
-    border-bottom: 2px solid #00aaff;
-    padding-bottom: 4px;
-}
 
-/* MOBILBARÁT BEÁLLÍTÁSOK */
 @media (max-width: 768px) {
+    main > h2 {
+        font-size: 22px;
+        margin: 25px 15px 15px;
+    }
+
+    .idovonal {
+        max-width: 100%;
+        margin: 0;
+        padding: 15px 0 40px;
+    }
+
     .idovonal::after {
-        left: 20px;
+        left: 22px;
     }
 
-    .misszio {
-        width: 100%;
-        margin-bottom: 25px;
-        padding-left: 50px !important;
-        padding-right: 0 !important;
-    }
-
+    .misszio,
+    .misszio:nth-child(odd),
     .misszio:nth-child(even) {
-        left: 0;
+        width: 100%;
+        left: 0 !important;
+        height: 300px;
+        min-height: 0;
+        margin-bottom: 20px;
+        padding-left: 45px !important;
+        padding-right: 15px !important;
     }
 
     .misszio::before,
     .misszio:nth-child(odd)::before,
     .misszio:nth-child(even)::before {
-        left: 13px !important;
+        left: 15px !important;
         right: auto !important;
     }
 
     .misszio-inner {
-        margin-left: 0 !important;
-        margin-right: auto !important;
+        margin: 0 !important;
+        max-width: 320px;
+        height: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .misszio,
+    .misszio:nth-child(odd),
+    .misszio:nth-child(even) {
+        padding-left: 40px !important;
+        padding-right: 10px !important;
     }
 
-    .misszio-img:hover {
-        transform: scale(1.4);
+    .idovonal::after {
+        left: 18px;
+    }
+
+    .misszio::before,
+    .misszio:nth-child(odd)::before,
+    .misszio:nth-child(even)::before {
+        left: 11px !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .misszio,
+    .misszio-inner,
+    .misszio::before,
+    .flip-hint {
+        animation: none !important;
+        transition: none !important;
     }
 }
 

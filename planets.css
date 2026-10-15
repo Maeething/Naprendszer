@@ -1,3 +1,4 @@
+
 main {
     max-width: 1200px;
     width: 92%;
@@ -19,7 +20,6 @@ main > p {
     margin-bottom: 45px;
 }
 
-
 .planet-section {
     margin-bottom: 60px;
 }
@@ -30,7 +30,6 @@ main > p {
     font-size: 28px;
     margin-bottom: 30px;
 }
-
 
 .planet-grid {
     display: grid;
@@ -93,7 +92,6 @@ main > p {
     margin-top: 20px;
 }
 
-
 .planet-image {
     width: 145px;
     height: 145px;
@@ -103,14 +101,9 @@ main > p {
 }
 
 @keyframes planetSpin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
 }
-
 
 .card-back {
     transform: rotateY(180deg);
@@ -153,7 +146,6 @@ main > p {
     font-weight: bold;
 }
 
-
 .comparison-container {
     overflow-x: auto;
     border: 1px solid #30363d;
@@ -190,67 +182,19 @@ main > p {
     border-bottom: none;
 }
 
-.rocky {
-    color: #ffbd7a;
-}
+.rocky { color: #ffbd7a; }
+.gas   { color: #f5d08a; }
+.ice   { color: #79d4e8; }
 
-.gas {
-    color: #f5d08a;
-}
-
-.ice {
-    color: #79d4e8;
-}
-
-@media (max-width: 950px) {
-    .planet-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    main > h1 {
-        font-size: 32px;
-    }
-}
-
-@media (max-width: 600px) {
-    main {
-        width: 90%;
-        padding-top: 25px;
-    }
-
-    .planet-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .planet-card {
-        height: 310px;
-    }
-
-    .planet-section h2 {
-        font-size: 24px;
-    }
-
-    .comparison-table th,
-    .comparison-table td {
-        padding: 12px 10px;
-        font-size: 13px;
-    }
-}
-
-
-
-@media (prefers-reduced-motion: reduce) {
-    .planet-image {
-        animation: none;
-    }
-
-    .card-inner {
-        transition: none;
-    }
-}
 .phenomena-section {
     margin-top: 80px;
+}
+
+.phenomena-section h2 {
+    color: #58a6ff;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
 }
 
 .phenomena-intro {
@@ -281,24 +225,10 @@ main > p {
     min-width: 0;
     overflow: hidden;
     border-radius: 18px;
-    background: radial-gradient(
-        circle,
-        #172b45 0%,
-        #0d1117 70%
-    );
+    background: radial-gradient(circle, #172b45 0%, #0d1117 70%);
     border: 1px solid #30363d;
-
-    opacity: 0;
-    --start-x: -60px;
-    --start-y: 0px;
-
-    animation: scrollReveal linear both;
-    animation-timeline: view();
-    animation-range: entry 30% entry 90%;
-
-    transition:
-        border-color 0.4s,
-        box-shadow 0.4s;
+    opacity: 1;
+    transition: border-color 0.4s, box-shadow 0.4s;
 }
 
 .phenomenon-image img {
@@ -307,16 +237,8 @@ main > p {
     aspect-ratio: 1.25 / 1;
     object-fit: contain;
     padding: 20px;
-    filter: drop-shadow(
-        0 0 12px rgba(88, 166, 255, 0.12)
-    );
-    transition:
-        transform 0.5s ease,
-        filter 0.5s ease;
-}
-
-.phenomenon.reverse .phenomenon-image {
-    --start-x: 60px;
+    filter: drop-shadow(0 0 12px rgba(88, 166, 255, 0.12));
+    transition: transform 0.5s ease, filter 0.5s ease;
 }
 
 .phenomenon-image:hover {
@@ -326,22 +248,13 @@ main > p {
 
 .phenomenon-image:hover img {
     transform: scale(1.09);
-    filter: drop-shadow(
-        0 0 18px rgba(88, 166, 255, 0.35)
-    );
+    filter: drop-shadow(0 0 18px rgba(88, 166, 255, 0.35));
 }
 
 .phenomenon-text {
     flex: 1;
     min-width: 0;
-
-    opacity: 0;
-    --start-x: 0px;
-    --start-y: 40px;
-
-    animation: scrollReveal linear both;
-    animation-timeline: view();
-    animation-range: entry 30% entry 90%;
+    opacity: 1;
 }
 
 .phenomenon-number {
@@ -377,27 +290,52 @@ main > p {
 }
 
 @keyframes lineGrow {
-    from {
-        transform: scaleX(0);
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+@supports (animation-timeline: view()) {
+    .phenomenon-image {
+        opacity: 0;
+        --start-x: -60px;
+        --start-y: 0px;
+        animation: scrollReveal linear both;
+        animation-timeline: view();
+        animation-range: entry 30% entry 90%;
     }
 
-    to {
-        transform: scaleX(1);
+    .phenomenon.reverse .phenomenon-image {
+        --start-x: 60px;
+    }
+
+    .phenomenon-text {
+        opacity: 0;
+        --start-x: 0px;
+        --start-y: 40px;
+        animation: scrollReveal linear both;
+        animation-timeline: view();
+        animation-range: entry 30% entry 90%;
+    }
+
+    @keyframes scrollReveal {
+        from {
+            opacity: 0;
+            transform: translate(var(--start-x, 0px), var(--start-y, 0px));
+        }
+        to {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
     }
 }
 
-@keyframes scrollReveal {
-    from {
-        opacity: 0;
-        transform: translate(
-            var(--start-x, 0px),
-            var(--start-y, 0px)
-        );
+@media (max-width: 950px) {
+    .planet-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    to {
-        opacity: 1;
-        transform: translate(0, 0);
+    main > h1 {
+        font-size: 32px;
     }
 }
 
@@ -417,6 +355,37 @@ main > p {
 
     .phenomenon-text h3 {
         font-size: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        width: 90%;
+        padding-top: 25px;
+    }
+
+    main > h1 {
+        font-size: 26px;
+    }
+
+    .planet-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .planet-card {
+        height: 310px;
+    }
+
+    .planet-section h2,
+    .phenomena-section h2 {
+        font-size: 22px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 12px 10px;
+        font-size: 13px;
     }
 }
 
@@ -443,6 +412,14 @@ main > p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .planet-image {
+        animation: none;
+    }
+
+    .card-inner {
+        transition: none;
+    }
+
     .phenomenon-image,
     .phenomenon-text,
     .phenomenon-line {
